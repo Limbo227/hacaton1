@@ -5,5 +5,9 @@ from django.shortcuts import render
 def index(request):
     return render(request, template_name='main/index.html')
 
-# def bakai_hospital(request):
-#     return render(request)
+def bakai_hospital(request):
+    return render(request)
+
+def hospitals(request):
+    return render(request, template_name='main/hospitals.html')
+
