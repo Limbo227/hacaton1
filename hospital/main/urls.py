@@ -6,8 +6,7 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', index, name='index'),
-    path('admin/', admin.site.urls),
-    path('hospitals/', hospitals, name='hospitals'),
+    path('hospitals/', Hospitals.as_view(), name='hospitals'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     # path('aziz-hospital/', aziz_hospital, name='aziz-hospital')

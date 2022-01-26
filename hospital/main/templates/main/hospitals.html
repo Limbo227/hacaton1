@@ -1,160 +1,32 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-<!--<div id="about" class="section wow fadeIn">-->
-<!--         <div class="container">-->
-<!--            <div class="heading">-->
-<!--               <span class="icon-logo"><img src="{% static 'images/icon-logo.png' %}" alt="#"></span>-->
-<!--               <h2>The Specialist Clinic</h2>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; end title &ndash;&gt;-->
-<!--            <div class="row">-->
-<!--               <div class="col-md-6">-->
-<!--                  <div class="message-box">-->
-<!--                     <h4>What We Do</h4>-->
-<!--                     <h2>Clinic Service</h2>-->
-<!--                     <p class="lead">Quisque eget nisl id nulla sagittis auctor quis id. Aliquam quis vehicula enim, non aliquam risus. Sed a tellus quis mi rhoncus dignissim.</p>-->
-<!--                     <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  </p>-->
-<!--                     <a href="#services" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn More</a>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; end messagebox &ndash;&gt;-->
-<!--               </div>-->
-<!--               &lt;!&ndash; end col &ndash;&gt;-->
-<!--               <div class="col-md-6">-->
-<!--                  <div class="post-media wow fadeIn">-->
-<!--                     <img src="{% static 'images/about_03.jpg' %}" alt="" class="img-responsive">-->
-<!--                     <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; end media &ndash;&gt;-->
-<!--               </div>-->
-<!--               &lt;!&ndash; end col &ndash;&gt;-->
-<!--            </div>-->
-<!--            &lt;!&ndash; end row &ndash;&gt;-->
-<!--            <hr class="hr1">-->
-<!--            <div class="row">-->
-<!--               <div class="col-md-3 col-sm-6 col-xs-12">-->
-<!--                  <div class="service-widget">-->
-<!--                     <div class="post-media wow fadeIn">-->
-<!--                        <a href="{% static 'images/clinic_01.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>-->
-<!--                        <img src="{% static 'images/clinic_01.jpg' %}" alt="" class="img-responsive">-->
-<!--                     </div>-->
-<!--                     <h3>Digital Control Center</h3>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; end service &ndash;&gt;-->
-<!--               </div>-->
-<!--               <div class="col-md-3 col-sm-6 col-xs-12">-->
-<!--                  <div class="service-widget">-->
-<!--                     <div class="post-media wow fadeIn">-->
-<!--                        <a href="{% static 'images/clinic_02.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>-->
-<!--                        <img src="{% static 'images/clinic_02.jpg' %}" alt="" class="img-responsive">-->
-<!--                     </div>-->
-<!--                     <h3>Hygienic Operating Room</h3>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; end service &ndash;&gt;-->
-<!--               </div>-->
-<!--               <div class="col-md-3 col-sm-6 col-xs-12">-->
-<!--                  <div class="service-widget">-->
-<!--                     <div class="post-media wow fadeIn">-->
-<!--                        <a href="{% static 'images/clinic_03.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>-->
-<!--                        <img src="{% static 'images/clinic_03.jpg' %}" alt="" class="img-responsive">-->
-<!--                     </div>-->
-<!--                     <h3>Specialist Physicians</h3>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; end service &ndash;&gt;-->
-<!--               </div>-->
-<!--               <div class="col-md-3 col-sm-6 col-xs-12">-->
-<!--                  <div class="service-widget">-->
-<!--                     <div class="post-media wow fadeIn">-->
-<!--                        <a href="{% static 'images/clinic_01.jpg' %}" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>-->
-<!--                        <img src="{% static 'images/clinic_01.jpg' %}" alt="" class="img-responsive">-->
-<!--                     </div>-->
-<!--                     <h3>Digital Control Center</h3>-->
-<!--                  </div>-->
-<!--                  &lt;!&ndash; end service &ndash;&gt;-->
-<!--               </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; end row &ndash;&gt;-->
-<!--         </div>-->
-<!--         &lt;!&ndash; end container &ndash;&gt;-->
-<!--      </div>-->
+
 <div class="container">
     <div class="row">
         <div class="col-4">
+        {% for h in hospital %}
             <div class="card m-2" style="width: 18rem;">
                 <div class="card-header">
-                    ФИО Главного Врача
+            {% for c in h.master.all %}
+                Глав Врач: {{c.fio}}
                 </div>
                 <br>
                 <div class="card-header">
-                    ФИО Лечащего врача
+               {% for d in h.doctor1.all %}
+                    Лечающий Врач: {{ d.fio}}
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Специальность: {{хирург/терапевт}}</li>
-                    <li class="list-group-item">Опыт работы: {{опыт работы}}</li>
-                    <li class="list-group-item">Заместитель: {{Имя медсестры}}</li>
-                    <li class="list-group-item">Номер телефона: {{ Номер телефона медсестры }}</li>
-                    <li class="list-group-item">Пациентов в очереди: {{Количество всех пациентов связанных с врачом}}</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="card m-2" style="width: 18rem;">
-                <div class="card-header">
-                    ФИО Главного Врача
-                </div>
-                <br>
-                    <div class="card-header">
-                        ФИО Лечащего врача
-                    </div>
+                   {% for n in h.nurse.all %}
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Специальность: {{хирург/терапевт}}</li>
-                        <li class="list-group-item">Опыт работы: {{опыт работы}}</li>
-                        <li class="list-group-item">Заместитель: {{Имя медсестры}}</li>
-                        <li class="list-group-item">Номер телефона: {{ Номер телефона медсестры }}</li>
-                        <li class="list-group-item">Пациентов в очереди: {{Количество всех пациентов связанных с врачом}}</li>
+                        <li class="list-group-item">Специальность: {{d.directions.title}}</li>
+                        <li class="list-group-item">Опыт работы: {{d.work_experience}}</li>
+                        <li class="list-group-item">Заместитель: {{n.fio}}</li>
+                        <li class="list-group-item">Номер телефона: {{n.phone_number}}</li>
+                        <li class="list-group-item">Пациентов в очереди: {{d.Apatient}}</li>
                     </ul>
-            </div>
-        </div>
+                   {% endfor %}
 
-        <div class="col-4">
-            <div class="card m-2" style="width: 18rem;">
-                <div class="card-header">
-                    ФИО Главного Врача
-                </div>
-                <br>
-                    <div class="card-header">
-                        ФИО Лечащего врача
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Специальность: {{хирург/терапевт}}</li>
-                        <li class="list-group-item">Опыт работы: {{опыт работы}}</li>
-                        <li class="list-group-item">Заместитель: {{Имя медсестры}}</li>
-                        <li class="list-group-item">Номер телефона: {{ Номер телефона медсестры }}</li>
-                        <li class="list-group-item">Пациентов в очереди: {{Количество всех пациентов связанных с врачом}}</li>
-                    </ul>
+               {% endfor %}
             </div>
-        </div>
-
-        <div class="col-4">
-            <div class="card m-2" style="width: 18rem;">
-                <div class="card-header">
-                    ФИО Главного Врача
-                </div>
-                <br>
-                <div class="card-header">
-                    ФИО Лечащего врача
-                </div>
-                    <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Специальность: {{хирург/терапевт}}</li>
-                    <li class="list-group-item">Опыт работы: {{опыт работы}}</li>
-                    <li class="list-group-item">Заместитель: {{Имя медсестры}}</li>
-                    <li class="list-group-item">Номер телефона: {{ Номер телефона медсестры }}</li>
-                    <li class="list-group-item">Пациентов в очереди: {{Количество всех пациентов связанных с врачом}}</li>
-                </ul>
-            </div>
+            {% endfor %}
+        {% endfor %}
         </div>
     </div>
 </div>
-
-{% endblock %}
