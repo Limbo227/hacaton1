@@ -1,3 +1,4 @@
+from django.template.defaulttags import url
 from django.urls import path
 from .views import *
 from django.conf.urls.static import static
@@ -6,10 +7,12 @@ from django.contrib import admin
 
 urlpatterns = [
     path('', index, name='index'),
-    path('hospitals/', Hospitals.as_view(), name='hospitals'),
+    path('hospitals/<str:title>', hospital_detail, name='hospital-detail'),
+    path('author/', index, name='author'),
+    path('logout/', user_logout, name='logout'),
+    path('login/', user_login, name='login'),
+    path('register/', register, name='register'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    # path('aziz-hospital/', aziz_hospital, name='aziz-hospital')
-    # path('bakai-hospital/', bakai_hospital, name='bakai-hospital')
-    # path('elmara-hospital/', elmara_hospital, name='elmara-hospital')
 

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="card-columns">
+            <div class="col-4">
+                <div class="card m-2" style="width: 20rem;">
+              {% for m in hospital.masters.all %}
+                  {% for d in hospital.doctors.all %}
+                       {% for n in hospital.nurse.all %}
+                            {% for a in hospital.ap.all %}
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Сенсей Врач: {{ m.fio }}</li>
+                                    <li class="list-group-item">Лечающий Врач: {{ d.fio}}</li>
+                                    <li class="list-group-item">Путь: {{d.directions.title}}</li>
+                                    <li class="list-group-item">Годы Битв: {{d.work_experience}}</li>
+                                    <li class="list-group-item">Карындашы: {{n.fio}}</li>
+                                    <li class="list-group-item">Номер телефона: {{n.phone_number}}</li>
+                                    <li class="list-group-item">Пациентов в очереди: {{a.total_patients}}</li>
+                                </ul>
+                            {% endfor %}
+                        {% endfor %}
+                  {% endfor %}
+              {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

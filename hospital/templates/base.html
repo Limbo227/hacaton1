@@ -69,100 +69,26 @@
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
                         <li><a class="active" href="{% url 'index' %}">Home</a></li>
-                        <li><a data-scroll href="{% url 'hospitals' %}">Hospitals</a></li>
-<!--                        <li><a data-scroll href="#service">Services</a></li>-->
-                        <li><a data-scroll href="#doctors">Doctors</a></li>
-<!--                        <li><a data-scroll href="#price">Price</a></li>-->
-<!--						<li><a data-scroll href="#testimonials">Testimonials</a></li>-->
-<!--                        <li><a data-scroll href="#getintouch">Contact</a></li>-->
+                        {% for hospital in hospitals %}
+                           <li><a class="false" href="{% url 'hospital-detail' title=hospital.title %}">{{hospital.title}}</a></li>
+                        {% endfor %}
+                        {% if request.user.is_authenticated %}
+                           <li><a class="nav-link" href="{% url 'author' %}"><img class="rounded-circle mr-2"
+                                src="{% static 'author_image/av.png' %}" width="30">
+                                class="align-middle">{{ user.username }}</a></li>
+                           <li><a href="{% url 'logout' %}">Выйти</a></li>
+                        {% else %}
+                        <li><span class="navbar-text">
+                            <a href="{% url 'register' %}">Зарегистрироваться</a>
+                            <a href="{% url 'login' %}">Войти</a>>
+                        </span></li>
+                        {% endif %}
                      </ul>
                   </div>
                </nav>
-               <div class="serch-bar">
-                  <div id="custom-search-input">
-                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search" />
-                        <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                        </span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
       </header>
-      {% block content %}
-      {% endblock %}
-      <footer id="footer" class="footer-area wow fadeIn">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="logo padding">
-                     <a href=""><img src="{% static 'images/logo.png' %}" alt=""></a>
-                     <p>Locavore pork belly scen ester pine est chill wave microdosing pop uple itarian cliche artisan.</p>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="footer-info padding">
-                     <h3>CONTACT US</h3>
-                     <p><i class="fa fa-map-marker" aria-hidden="true"></i> PO Box 16122 Collins Street West Victoria 8007 Australia</p>
-                     <p><i class="fa fa-paper-plane" aria-hidden="true"></i> info@gmail.com</p>
-                     <p><i class="fa fa-phone" aria-hidden="true"></i> (+1) 800 123 456</p>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="subcriber-info">
-                     <h3>SUBSCRIBE</h3>
-                     <p>Get healthy news, tip and solutions to your problems from our experts.</p>
-                     <div class="subcriber-box">
-                        <form id="mc-form" class="mc-form">
-                           <div class="newsletter-form">
-                              <input type="email" autocomplete="off" id="mc-email" placeholder="Email address" class="form-control" name="EMAIL">
-                              <button class="mc-submit" type="submit"><i class="fa fa-paper-plane"></i></button>
-                              <div class="clearfix"></div>
-                              <!-- mailchimp-alerts Start -->
-                              <div class="mailchimp-alerts">
-                                 <div class="mailchimp-submitting"></div>
-                                 <!-- mailchimp-submitting end -->
-                                 <div class="mailchimp-success"></div>
-                                 <!-- mailchimp-success end -->
-                                 <div class="mailchimp-error"></div>
-                                 <!-- mailchimp-error end -->
-                              </div>
-                              <!-- mailchimp-alerts end -->
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </footer>
-      <div class="copyright-area wow fadeIn">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-8">
-                  <div class="footer-text">
-                     <p>© 2018 Lifecare. All Rights Reserved.</p>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="social">
-                     <ul class="social-links">
-                        <li><a href=""><i class="fa fa-rss"></i></a></li>
-                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href=""><i class="fa fa-youtube"></i></a></li>
-                        <li><a href=""><i class="fa fa-pinterest"></i></a></li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+         {% block content %}
+         {% endblock %}
       <!-- end copyrights -->
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <!-- all js files -->
